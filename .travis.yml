@@ -1,3 +1,4 @@
+language: generic
 sudo: required
 services:
     - docker
@@ -5,4 +6,4 @@ before_install:
     - docker build -t jagwinderkaurd/docker-react-new -f Dockerfile.dev .
    
 script:
-    - docker run jagwinderkaurd/docker-react-new npm run test -- --coverage
+    - docker run -e CI=true jagwinderkaurd/docker-react-new npm run test
