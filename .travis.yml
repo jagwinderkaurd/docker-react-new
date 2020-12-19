@@ -7,3 +7,16 @@ before_install:
    
 script:
     - docker run -e CI=true jagwinderkaurd/docker-react-new npm run test
+
+deploy:
+    provider: elasticbeanstalk
+    region: "us-east-1"
+    app: "docker-react-new-jag"
+    env: "DockerReactNewJag-env"
+    bucket_name: "elasticbeanstalk-us-east-1-647874871378"
+    bucket_path: "docker-react-new-jag"
+    on: 
+        branch: master
+    access_key_id: $access_key_id
+    secret_access_key: 
+        secure: $secret_access_key
